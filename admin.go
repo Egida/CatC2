@@ -44,7 +44,7 @@ func (this *Admin) Handle() {
 			this.SetTitle("Cat C2 | User: [" + userInfo.username + "] | Expiry: [" + expiryString + "]")
 		}
 	}()
-	this.conn.Write([]byte("\033[2J\033[1;1H"))
+	this.ClearScreen()
 	for {
 		term := terminal.NewTerminal(this.conn, userInfo.username+"@Cat$ ")
 		cmd, err := term.ReadLine()
@@ -54,7 +54,7 @@ func (this *Admin) Handle() {
 		}
 
 		if cmd == "clear" || cmd == "cls" || cmd == "c" || cmd == "CLEAR" || cmd == "CLS" {
-			this.conn.Write([]byte("\033[2J\033[1;1H"))
+			this.ClearScreen()
 			continue
 		}
 		if cmd == "help" || cmd == "HELP" || cmd == "?" {
