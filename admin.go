@@ -39,7 +39,7 @@ func (this *Admin) Handle() {
 					expiryString = fmt.Sprintf("%dh %dm", int64(timee.Hours()), int64(timee.Minutes()))
 				}
 			} else {
-				expiryString = "-1"
+				expiryString = "None"
 			}
 			this.SetTitle("Cat C2 | User: [" + userInfo.username + "] | Expiry: [" + expiryString + "]")
 		}
