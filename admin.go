@@ -46,7 +46,7 @@ func (this *Admin) Handle() {
 	}()
 	this.conn.Write([]byte("\033[2J\033[1;1H"))
 	for {
-		term := terminal.NewTerminal(this.conn, userInfo.username+"> ")
+		term := terminal.NewTerminal(this.conn, userInfo.username+"@Cat$ ")
 		cmd, err := term.ReadLine()
 		cmd = strings.ToLower(cmd)
 		if err != nil {
