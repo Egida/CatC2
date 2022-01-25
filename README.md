@@ -10,7 +10,7 @@ A simple C2 like Slovakia. Based on the Mirai(未来) cnc with ssh.
 - [x] Gradient Generator
 - [ ] Ban System
 - [ ] Kick System
-- [ ] User System
+- [x] User System
 - [x] Database
 
 <h3>⚡️ Current Features: </h3>
