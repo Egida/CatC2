@@ -15,4 +15,4 @@ A simple C2 like Slovakia. Based on the Mirai(未来) cnc with ssh.
 
 <h3>⚡️ Libraries: </h3>
 
-- <a href="github.com/gliderlabs/ssh">GliderLabs SSH</a>
+- <a href="https://github.com/gliderlabs/ssh">GliderLabs SSH</a>
