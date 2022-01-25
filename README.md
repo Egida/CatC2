@@ -12,6 +12,7 @@ A simple C2 like Slovakia. Based on the Mirai(未来) cnc with ssh.
 - [ ] Kick System
 - [x] User System
 - [x] Database
+- [x] Attack System 
 
 <h3>⚡️ Current Features: </h3>
 
